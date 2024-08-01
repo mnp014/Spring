@@ -1,0 +1,6 @@
+@EventListener( {ApplicationReadyEvent.class})
+    void startServerThread(ApplicationReadyEvent applicationReadyEvent) {
+        ConfigurableApplicationContext applicationContext = applicationReadyEvent.getApplicationContext();
+        ServiceListener serviceListener = applicationContext.getBean(serviceListener.class);
+        new Thread(serviceListener).start();
+    }
